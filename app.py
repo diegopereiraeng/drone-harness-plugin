@@ -12,7 +12,6 @@ ACCOUNT_ID = os.environ.get('PLUGIN_ACCOUNTID')
 API_KEY = os.environ.get('PLUGIN_APIKEY') 
 APPLICATION_NAME = os.environ.get('PLUGIN_APPLICATION')
 WORKFLOW_NAME = os.environ.get('PLUGIN_ENTITYNAME')
-#BODY = os.environ.get('PLUGIN_BODY')
 EXECUTION_TYPE = os.environ.get('PLUGIN_TYPE')
 SERVICE_NAME = os.environ.get('PLUGIN_SERVICE_NAME')
 BUILD_NUMBER = os.environ.get('PLUGIN_BUILD_NUMBER')
@@ -22,6 +21,7 @@ WAIT_FOR_EXECUTION = os.environ.get('PLUGIN_WAIT_FOR_EXECUTION') or "false"
 WAIT_FOR_EXECUTION_TIMEOUT = int(os.environ.get('PLUGIN_WAIT_FOR_EXECUTION_TIMEOUT')) or 30
 RETURN_ERROR_IF_EXECUTION_FAIL = os.environ.get('PLUGIN_RETURN_ERROR_IF_EXECUTION_FAIL') or "false"
 EXECUTION_NOTES = os.environ.get('PLUGIN_EXECUTION_NOTES') or "Automated Execution"
+
 
 
 
@@ -126,9 +126,9 @@ if EXECUTION_TYPE == "WORKFLOW":
         time.sleep(15)
         workflow_status = status(execution_id['data']['startExecution']['execution']['id'])['data']['execution']['status']
         if time.time() > timeout:
-            sys.exit(777)
+            sys.exit(77)
     if RETURN_ERROR_IF_EXECUTION_FAIL == "true" and (workflow_status == "FAILED" or workflow_status == "ABORTED" or workflow_status == "EXPIRED" or workflow_status == "REJECTED" or workflow_status == "ERROR"):
-      sys.exit(333)
+      sys.exit(33)
   print(workflow_status)
 
 else:
@@ -143,13 +143,7 @@ else:
         time.sleep(15)
         pipeline_status = status(execution_id['data']['startExecution']['execution']['id'])['data']['execution']['status']
         if time.time() > timeout:
-            sys.exit(777)
+            sys.exit(77)
     if RETURN_ERROR_IF_EXECUTION_FAIL == "true" and (pipeline_status == "FAILED" or pipeline_status == "ABORTED" or pipeline_status == "EXPIRED" or pipeline_status == "REJECTED" or pipeline_status == "ERROR"):
-      sys.exit(333)
+      sys.exit(33)
   print(pipeline_status)
-
-
-
-""" status("DsCaP1eJSJSePbsYK4td2Q")
-status("Inrzd03aQ967s141m9XsWQ")
-status("bO3xZz_iQcSYruJY8GJqqQ") """

@@ -8,7 +8,9 @@ Known Limitations:
 
 1 - Your service needs an artifact
 
-2 - Your Workflow/Pipeline should templatize the service as "${Service}" variable as in input.
+Good to Know
+
+1 - If you are using service as template on your pipe/workflow, you can set the service variable with the name "Service", so the plugin automatically send it to you when you define the service name in the plugin. if you are using a different name for the service variable name as input, you should add them in the DYNAMIC_VARIABLES_INPUT param.
 
 ### Options
 
